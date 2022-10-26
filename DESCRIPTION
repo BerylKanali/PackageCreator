@@ -1,13 +1,15 @@
-Package: packagetemplate
-Title: Package Template
-Version: 0.0.0.9000
+Package: BodyPackage
+Title: Package to filter data from BugSigDB.
+Version: 1.0.0
 Authors@R: 
-    person(given = "J",
-           family = "Wokaty",
+    person(given = "Beryl",
+           family = "Kanali",
            role = c("aut", "cre"),
-           email = "jwokaty@users.noreply.github.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: A template for creating R packages.
+           email = "kanaliberyl@gmail.com",
+           comment = c(ORCID = "0000-0002-8869-9922"))
+Description: A package that is used to filter data from BugSigDB according to body site and condition.
+Dependency: BiocManager::bugsigdbr
+VignetteBuilder:: knitr
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
