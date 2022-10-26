@@ -1,0 +1,89 @@
+---
+title: "Package Name: BodyPackage"
+author: "Beryl Kanali"
+date: "2022-10-26"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{packageTemplateHC}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Package Description
+
+This is a package created from the `bugsigdbr` package in Bioconductor.
+It imports data from BugSigDB and filters the data based on body site and
+condition.
+
+This is how the package works:
+
+-   Calls the library `bugsigdbr`
+
+-   Imports all the data from [BugSigBD](bugsigdb.org)
+
+-   Filters the imported data based on body site and condition.
+
+-   Returns a dataframe of the filtered data.
+
+
+## Using `BodyPackage`
+
+A person who is interested in using the package 'BodyPackage' above:
+
+-  Should have the `bugsigdbr` package installed.
+
+-  Should be interested in knowing the relationship between the body site and condition or in the data filtered based on bodysite and condition
+
+
+There are over 90 different body sites and over 180 conditions in the
+dataset. Body site is the part of the body or matter from the body that was tested and the condition is what the species is found to have.
+
+Body Package accepts two arguments and both arguments are strings:
+-body site : part of the body, 
+-condition: condition the species has.
+
+The output of this package is a dataframe containing all
+entries of the body site  and condition of choice.
+
+For Example: We can have the body site as "oral gland" or "rectum"
+             The condition can be "COVID-19" or "obesity" etc.
+
+
+## Code Description
+
+```{r}
+# This is a function to print a dataframe with body site and condition
+BodyPackage <- function(`body site`,'condition') {
+	library(bugsigdbr)
+	data <- importBugSigDB()
+	df <- subset(data, `Body site` == `body site`  &
+               Condition == condition)
+  
+	  print(df)
+}
+```
+The first line is a comment describing the code block.
+Then in the second line we are creating a function called `BodyPackage` that takes two string arguments body site and condition.
+We then call the library `bugsigdbr`.
+Then in the fourth line we are importing the data and calling it "data".
+The fifth line describes a dataframe called df that is created from the data we imported by filtering it according to body site and condition.
+In the final line we are printing the datadrame called df as our output.
+
+
+## Example
+This is an example to filter the body site "rectum" and condition "COVID-19".
+
+```{r echo=TRUE}
+rectumcovid <- BodyPackage("rectum", "COVID-19")
+dim(rectumcovid)
+```
